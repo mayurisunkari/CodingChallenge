@@ -29,11 +29,11 @@ public class DonationsDaoImpl implements DonationsDao {
 		while(rs.next()) {
 			donation = new Donations();
 			donation.setDonationID(rs.getInt("DonationID"));
-			donation.setDonarName(rs.getString("DonorName"));
+			donation.setDonarName(rs.getString("DonarName"));
 			donation.setDonationType(rs.getString("DonationType"));
 			donation.setDonationAmount(rs.getDouble("DonationAmount"));
 			donation.setDonationItem(rs.getString("DonationItem"));
-			donation.setDonationDateTime(rs.getDate("DonationDate"));
+			donation.setDonationDateTime(rs.getDate("DonationDateTime"));
 
 			
 			DonationsList.add(donation);
@@ -43,23 +43,23 @@ public class DonationsDaoImpl implements DonationsDao {
 	}
 
 	@Override
-	public List<Donations> showDononName(String DononName) throws ClassNotFoundException, SQLException {
+	public List<Donations> showDononName(String DonarName) throws ClassNotFoundException, SQLException {
 		String connStr = DBPropertyUtil.connectionString("DB");
 		connection = DBConnUtil.getConnection(connStr);
 		String cmd="select * from Donations where DonarName =?";
 		pst=connection.prepareStatement(cmd);
-		pst.setString(1, DononName);
+		pst.setString(1, DonarName);
 		ResultSet rs = pst.executeQuery();
 		List<Donations> DonationsList = new ArrayList<Donations>();
 		Donations donation = null;
 		while(rs.next()) {
 			donation = new Donations();
 			donation.setDonationID(rs.getInt("DonationID"));
-			donation.setDonarName(rs.getString("DonorName"));
+			donation.setDonarName(rs.getString("DonarName"));
 			donation.setDonationType(rs.getString("DonationType"));
 			donation.setDonationAmount(rs.getDouble("DonationAmount"));
 			donation.setDonationItem(rs.getString("DonationItem"));
-			donation.setDonationDateTime(rs.getDate("DonationDate"));
+			donation.setDonationDateTime(rs.getDate("DonationDateTime"));
 
 			
 			DonationsList.add(donation);
